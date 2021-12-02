@@ -14,7 +14,11 @@ with open("static/meta.html", 'r', encoding='utf-8') as f:
 
 
 def make_header():
-    st.markdown('<script>document.getElementsByClassName("block-container").forEach(function(elem) {elem.style.overflow = "scroll"; console.log(elem);});</script>', unsafe_allow_html=True)
+    st.markdown('''<script>
+                var docs = document.getElementsByClassName("block-container");
+                for (var i = 0; i < docs.length; i++)
+                  docs[i].style.overflow = "scroll";
+                </script>''', unsafe_allow_html=True)
     components.html(f"<style>{header_style_css}</style>{header_html}<script>{header_animate_js}</script>", height=260)
     st.markdown(meta_html, unsafe_allow_html=True)
     st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
