@@ -15,7 +15,7 @@ with open("static/meta.html", 'r', encoding='utf-8') as f:
 
 def make_header():
     st.markdown('''<script>
-                var docs = document.getElementsByClassName("block-container");
+                var docs = document.getElementsByClassName("main");
                 for (var i = 0; i < docs.length; i++)
                   docs[i].style.overflow = "scroll";
                 </script>''', unsafe_allow_html=True)
