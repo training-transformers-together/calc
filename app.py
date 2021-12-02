@@ -32,7 +32,7 @@ st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # ap
 
 def content_text(text: str, vspace_before: int = 0, vspace_after: int = 0):
     st.markdown(f'<center><div class="padded faded main_text" '
-                f'style="padding-top: {vspac_before}px;padding-bottom: {vspace_after}px;">'
+                f'style="padding-top: {vspace_before}px;padding-bottom: {vspace_after}px;">'
                 f'{text}</div><center>',
                 unsafe_allow_html=True)
 CITATIONS = {}
