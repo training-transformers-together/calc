@@ -35,6 +35,7 @@ def draw_current_progress():
         use_container_width=True,
     )
 
+def draw_participant_bubbles():
     with st.expander("Who's training?", expanded=False):
         st.markdown("### Collaborative training participants\n(may take a few seconds to load)")
 

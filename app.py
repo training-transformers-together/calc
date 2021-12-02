@@ -6,7 +6,7 @@ If you're not a hedgehog, you shouldn't reuse this code. Use this instead: https
 import streamlit as st
 
 
-from st_helpers import make_header, content_text, cite
+from st_helpers import make_header, content_text, content_title, cite
 from charts import draw_current_progress
 
 st.set_page_config(page_title="Training Transformers Together", layout="centered")
@@ -28,3 +28,17 @@ All it takes is for a bunch of us to come together. In fact, we're doing it righ
 """, vspace_before=12, vspace_after=16)
 
 draw_current_progress()
+
+content_text(f"""
+The model we're training is called DALLE: a transformer "language model" that generates images from text description.
+We're training this model on <a href=https://laion.ai/laion-400-open-dataset/>LAION</a> - the world's largest openly available
+image-text-pair dataset with 400 million samples.
+<b>TODO</b> You see a short description of training dataset, model architecture and training configuration.
+In includes all necessary citations and, most importantly, a down-to-earth explanation of what exactly is dalle.
+It properly refers the communities that provided data, the source codebase and provides necessary links.
+""")
+
+content_title("How do I join?")
+
+content_text("For the sake of ")
+

@@ -19,8 +19,15 @@ def make_header():
     st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
 
 
+def content_title(title: str, vspace_before: int = 0, vspace_after: int = 0):
+    st.markdown(f'<center><div class="padded faded demo_title" '
+                f'style="padding-top: {vspace_before}px; padding-bottom: {vspace_after}px; text-align: justify;">'
+                f'{title}</div><center>',
+                unsafe_allow_html=True)
+
+
 def content_text(text: str, vspace_before: int = 0, vspace_after: int = 0):
-    st.markdown(f'<center><div class="padded faded main_text" '
+    st.markdown(f'<center><div class="padded faded demo_text" '
                 f'style="padding-top: {vspace_before}px; padding-bottom: {vspace_after}px; text-align: justify;">'
                 f'{text}</div><center>',
                 unsafe_allow_html=True)
