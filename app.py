@@ -51,7 +51,7 @@ took 20,000 TPU-v3 days {cite("coatnet")}. And things are even worse in the NLP 
 content_text(f"""
 So, can individual researchers and small labs still train state-of-the-art? Yes we can!
 All it takes is for a bunch of us to come together. In fact, we're doing it right now and <b>you're invited to join!</b>
-""", vspace_before=12, vspace_after=12)
+""", vspace_before=12, vspace_after=16)
 
 source = get_main_metrics()
 st.vega_lite_chart(
