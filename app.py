@@ -1,14 +1,16 @@
+"""
+This part of the website was bodged together by ham-handed hedgehogs. If something looks wrong, it's because it is.
+If you're not a hedgehog, you shouldn't reuse this code. Use this instead: https://docs.streamlit.io/library/get-started
+"""
 import os
 
 import streamlit as st
+import streamlit.components.v1 as components
 import wandb
 
 from dashboard_utils.bubbles import get_new_bubble_data
 from dashboard_utils.main_metrics import get_main_metrics
 from streamlit_observable import observable
-
-import streamlit as st
-import streamlit.components.v1 as components
 
 
 st.set_page_config(page_title="Training Transformers Together", layout="centered")
