@@ -30,8 +30,10 @@ components.html(f"<style>{header_style_css}</style>{header_html}<script>{header_
 st.markdown(meta_html, unsafe_allow_html=True)
 st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
 
-def content_text(text: str, vspace: int = 0):
-    st.markdown(f'<center><div class="padded faded main_text" style="padding-top: {vspace}px;">{text}</div><center>',
+def content_text(text: str, vspace_before: int = 0, vspace_after: int = 0):
+    st.markdown(f'<center><div class="padded faded main_text" '
+                f'style="padding-top: {vspac_before}px;padding-bottom: {vspace_after}px;">'
+                f'{text}</div><center>',
                 unsafe_allow_html=True)
 CITATIONS = {}
 def cite(tag):
@@ -47,9 +49,7 @@ took 20,000 TPU-v3 days {cite("coatnet")}. And things are even worse in the NLP 
 content_text(f"""
 So, can individual researchers and small labs still train state-of-the-art? Yes we can!
 All it takes is for a bunch of us to come together. In fact, we're doing it right now and <b>you're invited to join!</b>
-""", vspace=12)
-
-st.markdown("<br>", unsafe_allow_html=True)
+""", vspace_before=12, vspace_after=12)
 
 source = get_main_metrics()
 st.vega_lite_chart(
