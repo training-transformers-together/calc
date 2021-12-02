@@ -30,4 +30,4 @@ def get_main_metrics():
         alive_peers.append(row["alive peers"])
         dates.append(datetime.datetime.utcfromtimestamp(row["_timestamp"]))
 
-    return pd.DataFrame({"steps": steps, "training loss": losses, "active participants": alive_peers, "date": dates})
+    return pd.DataFrame({"steps": steps, "training loss": losses, "active participants": alive_peers, "wall time": dates})
