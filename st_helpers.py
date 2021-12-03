@@ -14,15 +14,14 @@ with open("static/meta.html", 'r', encoding='utf-8') as f:
 
 
 def make_header():
-    st.markdown('''<script>
-                var docs = document.getElementsByClassName("main");
-                for (var i = 0; i < docs.length; i++)
-                  docs[i].style.overflow = "scroll";
-                alert("123");
-                </script>''', unsafe_allow_html=True)
     components.html(f"<style>{header_style_css}</style>{header_html}<script>{header_animate_js}</script>", height=260)
     st.markdown(meta_html, unsafe_allow_html=True)
     st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
+    st.markdown('''123123123 <script>
+                console.log("123");
+                var app = document.getElementsByClassName("stApp")[0];
+                app.style.height = "99999px";
+                </script>''', unsafe_allow_html=True)
 
 
 def content_title(title: str, vspace_before: int = 0, vspace_after: int = 0):
