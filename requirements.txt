@@ -1,3 +1,4 @@
 streamlit
 wandb
 requests_futures
+bs4
