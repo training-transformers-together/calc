@@ -37,5 +37,5 @@ CITATIONS = {}
 
 
 def cite(tag):
-    CITATIONS[tag] = len(CITATIONS) + 1
+    CITATIONS.setdefault(tag, len(CITATIONS) + 1)
     return f"&nbsp;[{CITATIONS[tag]}]"

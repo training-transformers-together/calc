@@ -27,18 +27,15 @@ So, can individual researchers and small labs still train state-of-the-art? Yes 
 All it takes is for a bunch of us to come together. In fact, we're doing it right now and <b>you're invited to join!</b>
 """, vspace_before=12)
 
-content_text("<br>")
+st.markdown("<br>", unsafe_allow_html=True)
 
 draw_current_progress()
 
 content_text(f"""
 The model we're training is called DALLE: a transformer "language model" that generates images from text description.
 We're training this model on <a href=https://laion.ai/laion-400-open-dataset/>LAION</a> - the world's largest openly available
-image-text-pair dataset with 400 million samples.
-<b>TODO</b> You see a short description of training dataset, model architecture and training configuration.
-In includes all necessary citations and, most importantly, a down-to-earth explanation of what exactly is dalle.
-It properly refers the communities that provided data, the source codebase and provides necessary links.
-""")
+image-text-pair dataset with 400 million samples. Our model is based on
+<a href=https://github.com/lucidrains/DALLE-pytorch>dalle-pytorch</a> with additional features for memory efficiency.""")
 
 content_title("How do I join?")
 
