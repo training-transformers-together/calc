@@ -6,7 +6,7 @@ If you're not a hedgehog, you shouldn't reuse this code. Use this instead: https
 import streamlit as st
 
 
-from st_helpers import make_header, content_text, content_title, cite
+from st_helpers import make_header, content_text, content_title, cite, make_footer
 from charts import draw_current_progress
 
 st.set_page_config(page_title="Training Transformers Together", layout="centered")
@@ -36,7 +36,27 @@ image-text-pair dataset with 400 million samples. Our model is based on
 <a target="_blank" rel="noopener noreferrer" href=https://github.com/lucidrains/DALLE-pytorch>dalle-pytorch</a> 
 with several tweaks for memory-efficient training.""")
 
+
 content_title("How do I join?")
 
-content_text("For the sake of ")
+content_text("""
+That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one <b>TODO</b>.<br>
 
+<ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -32px;">
+    <li style="margin-top: 4px;">
+        Join our organization on Hugging Face here: <b>TODO</b>. </li>
+    <li style="margin-top: 4px;">
+        The simplest way to start is with colab <b>TODO</b>;</li>
+    <li style="margin-top: 4px;">
+        You can find other starter kits, evaluation and inference notebooks <b>TODO IN OUR ORGANIZATION</b>;</li>
+    <li style="margin-top: 4px;">
+        If you have any issues, <b>TODO DISCORD BADGE</b> </li> 
+</ul>
+
+Please note that we currently limit the number of colab participants to <b>TODO</b> to make sure we do not interfere
+with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
+""")
+
+
+content_text("<b> TODO UPDATE")
+make_footer()
