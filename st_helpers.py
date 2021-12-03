@@ -13,6 +13,8 @@ with open("static/content_style.css", 'r', encoding='utf-8') as f:
     content_style_css = f.read()
 with open("static/meta.html", 'r', encoding='utf-8') as f:
     meta_html = f.read()
+with open("static/tabs.html", 'r', encoding='utf-8') as f:
+    tabs_html = f.read()
 with open("static/footer.html", 'r', encoding='utf-8') as f:
     footer_html = f.read()
 
@@ -27,8 +29,12 @@ def make_header():
     )
 
 
+def make_tabs():
+    components.html(f"<style>{content_style_css}</style>{tabs_html}", height=400)
+
+
 def make_footer():
-    components.html(f"<style>{embeds_style_css}</style>{footer_html}", height=110)
+    components.html(f"<style>{content_style_css}</style>{footer_html}", height=110)
 
 
 def content_title(title: str, vspace_before: int = 0, vspace_after: int = 0):
@@ -51,22 +57,3 @@ CITATIONS = {}
 def cite(tag):
     CITATIONS.setdefault(tag, len(CITATIONS) + 1)
     return f"&nbsp;[{CITATIONS[tag]}]"
-
-
-def draw_tab_selector(tabs: Sequence[str], active_tab: str):
-    li_items = "".join(
-        f"""
-        <li class="nav-item">
-            <a class="nav-link{' active' if t == active_tab else ''}" href="/?tab={t}">{t}</a>
-        </li>
-        """
-        for t in tabs
-    )
-    tabs_html = f"""
-        <ul class="nav nav-tabs">
-        {li_items}
-        </ul>
-    """
-
-    st.markdown(tabs_html, unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
