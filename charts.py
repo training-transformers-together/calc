@@ -10,7 +10,10 @@ def draw_current_progress():
     st.vega_lite_chart(
         source, {
             "height": 200,
-            "title": "Training DALLE with volunteers. Updated every few minutes during NeurIPS.",
+            "title": {
+                "text": "Training DALLE with volunteers. Updated every few minutes during NeurIPS.",
+                "dy": 2,
+            },
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Current training progress",
             "encoding": {"x": {"field": "wall time", "type": "temporal"}},
