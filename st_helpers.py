@@ -18,6 +18,7 @@ def make_header():
                 var docs = document.getElementsByClassName("main");
                 for (var i = 0; i < docs.length; i++)
                   docs[i].style.overflow = "scroll";
+                alert("123");
                 </script>''', unsafe_allow_html=True)
     components.html(f"<style>{header_style_css}</style>{header_html}<script>{header_animate_js}</script>", height=260)
     st.markdown(meta_html, unsafe_allow_html=True)
