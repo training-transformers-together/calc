@@ -17,7 +17,7 @@ def make_header():
     components.html(f"<style>{header_style_css}</style>{header_html}<script>{header_animate_js}</script>", height=260)
     st.markdown(meta_html, unsafe_allow_html=True)
     st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
-    st.markdown('''123123123 <script>
+    st.markdown('''<script>
                 console.log("123");
                 var app = document.getElementsByClassName("stApp")[0];
                 app.style.height = "99999px";
