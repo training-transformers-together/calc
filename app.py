@@ -16,35 +16,6 @@ st.markdown("## Full demo content will be posted here on December 7th!")
 
 make_header()
 
-
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, CustomJS, Slider
-from bokeh.plotting import Figure, output_file, show
-x = [x*0.005 for x in range(0, 200)]
-y = x
-source = ColumnDataSource(data=dict(x=x, y=y))
-
-plot = Figure(width=400, height=400)
-plot.line('x', 'y', source=source, line_width=3, line_alpha=0.6)
-
-callback = CustomJS(args=dict(source=source), code="""
-    const data = source.data;
-    const f = cb_obj.value
-    const x = data['x']
-    const y = data['y']
-    for (let i = 0; i < x.length; i++) {
-        y[i] = Math.pow(x[i], f)
-    }
-    source.change.emit();
-    alert("123");
-""")
-
-slider = Slider(start=0.1, end=4, value=1, step=.1, title="power")
-slider.js_on_change('value', callback)
-
-layout = column(slider, plot)
-st.bokeh_chart(layout)
-
 content_text(f"""
 There was a time when you could comfortably train SoTA vision and language models at home on your workstation.
 The first ConvNet to beat ImageNet took in 5-6 days on two gamer-grade GPUs{cite("alexnet")}. Today's top-1 imagenet model 
