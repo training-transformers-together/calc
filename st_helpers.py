@@ -1,5 +1,8 @@
+import pathlib
+
 import streamlit as st
 import streamlit.components.v1 as components
+from bs4 import BeautifulSoup
 
 with open("static/header.html", 'r', encoding='utf-8') as f:
     header_html = f.read()
@@ -11,6 +14,18 @@ with open("static/content_style.css", 'r', encoding='utf-8') as f:
     content_style_css = f.read()
 with open("static/meta.html", 'r', encoding='utf-8') as f:
     meta_html = f.read()
+
+
+GA_JS = """alert("Hello world!")"""
+
+# Insert the script in the head tag of the static template inside your virtual environement
+index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
+soup = BeautifulSoup(index_path.read_text(), features="lxml")
+if not soup.find(id='custom-js'):
+    script_tag = soup.new_tag("script", id='custom-js')
+    script_tag.string = GA_JS
+    soup.head.append(script_tag)
+    index_path.write_text(str(soup))
 
 
 def make_header():
