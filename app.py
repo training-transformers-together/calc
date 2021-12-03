@@ -6,7 +6,7 @@ If you're not a hedgehog, you shouldn't reuse this code. Use this instead: https
 import streamlit as st
 
 
-from st_helpers import make_header, content_text, content_title, cite, make_footer
+from st_helpers import make_header, content_text, content_title, cite, make_footer, draw_tab_selector
 from charts import draw_current_progress
 
 st.set_page_config(page_title="Training Transformers Together", layout="centered")
@@ -56,6 +56,46 @@ That's easy. First, make sure you're logged in at Hugging Face. If you don't hav
 Please note that we currently limit the number of colab participants to <b>TODO</b> to make sure we do not interfere
 with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
 """)
+
+content_title("But how does it work?")
+content_text("<b> TODO </b> General Story That Weaves Together Three Tabs Below . Lorem ipsum dolor sit amet, "
+             "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+             " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+             "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+             "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
+query_params = st.experimental_get_query_params()
+tabs = ["Efficient Training", "Security & Privacy", "Make Your Own (TBU)"]
+active_tab = query_params["tab"][0] if "tab" in query_params else tabs[0]
+if active_tab not in tabs:
+    st.experimental_set_query_params(tab=tabs[0])
+    active_tab = tabs[0]
+
+draw_tab_selector(tabs, active_tab)
+
+if active_tab == tabs[0]:
+    content_text("<b> TODO 1</b> Lorem ipsum dolor sit amet, "
+                 "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+                 " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+                 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
+elif active_tab == tabs[1]:
+    content_text("<b> TODO 2</b> Lorem ipsum dolor sit amet, "
+                 "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+                 " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+                 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
+elif active_tab == tabs[2]:
+    content_text("<b> TODO 3</b> Lorem ipsum dolor sit amet, "
+                 "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+                 " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+                 "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+
+else:
+    st.error("Something has gone terribly wrong. Please keep your fingers crossed while reloading the page.")
 
 
 content_text("<b> TODO UPDATE")

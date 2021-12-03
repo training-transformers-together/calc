@@ -1,3 +1,5 @@
+from typing import Sequence
+
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -19,6 +21,10 @@ def make_header():
     components.html(f"<style>{embeds_style_css}</style>{header_html}<script>{header_animate_js}</script>", height=260)
     st.markdown(meta_html, unsafe_allow_html=True)
     st.markdown(f"<style>{content_style_css}</style>", unsafe_allow_html=True)  # apply css to the rest of the document
+    st.markdown(
+        '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">',
+        unsafe_allow_html=True,
+    )
 
 
 def make_footer():
@@ -45,3 +51,22 @@ CITATIONS = {}
 def cite(tag):
     CITATIONS.setdefault(tag, len(CITATIONS) + 1)
     return f"&nbsp;[{CITATIONS[tag]}]"
+
+
+def draw_tab_selector(tabs: Sequence[str], active_tab: str):
+    li_items = "".join(
+        f"""
+        <li class="nav-item">
+            <a class="nav-link{' active' if t == active_tab else ''}" href="/?tab={t}">{t}</a>
+        </li>
+        """
+        for t in tabs
+    )
+    tabs_html = f"""
+        <ul class="nav nav-tabs">
+        {li_items}
+        </ul>
+    """
+
+    st.markdown(tabs_html, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
