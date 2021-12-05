@@ -49,7 +49,7 @@ a:visited {
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">"Efficient Training"</a></li>
-            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Security & Privacy</a></li>
+            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Security</a></li>
             <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Make Your Own (TBU)</a></li>
         </ul>
 
@@ -61,9 +61,70 @@ a:visited {
                 </span>
             </div>
             <div role="tabpanel" class="tab-pane" id="tab2">
-                <span class="padded faded text">
-                <b> TODO 12</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </span>
+                <p>
+                <b>Q: If I join a collaborative training, do I allow other people to execute code on my computer?</b>
+                </p>
+
+                <p>
+                <b>A:</b> During the training, participants only exchange data (gradients, statistics, model weights) and never send code to each other.
+                No other peer can execute code on your computer.
+                </p>
+
+                <p>
+                To join the training, you typically need to run the code (implementing the model, data streaming, training loop, etc.)
+                from a repository or a Colab notebook provided by the authors of the experiment.
+                This is no different from running any other open source project/Colab notebook.
+                </p>
+
+                <p>
+                <b>Q: Can a malicious participant influence the training outcome?</b>
+                </p>
+
+                <p>
+                <b>A:</b> It is indeed possible unless we use some defense mechanism.
+                For instance, a malicious participant can damage model weights by sending large numbers instead of the correct gradients.
+                The same can happen due to broken hardware or misconfiguration.
+                </p>
+
+                <p>
+                One possible defense is using <b>authentication</b> combined with <b>model checkpointing</b>.
+                In this case, participants should log in (e.g. with their Hugging Face account) to interact with the rest of the collaboration.
+                In turn, moderators can screen potential participants and add them to an allowlist.
+                If something goes wrong (e.g. if a participant sends invalid gradients and the model diverges),
+                the moderators remove them from the list and revert the model to the latest checkpoint unaffected by the attack.
+                </p>
+
+                <details>
+                <summary>Spoiler: How to implement authentication in a decentralized system efficiently?</summary>
+                TODO
+                </details>
+
+                <p>
+                Nice bonus: using this data, the moderators can acknowledge the personal contribution of each participant.
+                </p>
+
+                <p>
+                Another defense is replacing the naive averaging of the peers' gradients with an <b>aggregation technique robust to outliers</b>.
+                <a href="https://arxiv.org/abs/2012.10333">Karimireddy et al. (2020)</a>
+                suggested such a technique (named CenteredClip) and proved that it does not significantly affect the model's convergence.
+                </p>
+
+                <details>
+                <summary>How does CenteredClip protect from outliers? (Interactive Demo)</summary>
+                TODO
+                </details>
+
+                <p>
+                In our case, CenteredClip is useful but not enough to protect from malicious participants,
+                since it implies that the CenteredClip procedure itself is performed by a trusted server.
+                In contrast, in our decentralized system, all participants can aggregate a part of the gradients and we cannot assume all of them to be trusted.
+                </p>
+
+                <p>
+                Recently, <a href="https://arxiv.org/abs/2106.11257">Gorbunov et al. (2021)</a>
+                proposed a robust aggregation protocol for decentralized systems that does not require this assumption.
+                This protocol uses CenteredClip as a subroutine but is able to detect and ban participants who performed it incorrectly.
+                </p>
             </div>
             <div role="tabpanel" class="tab-pane" id="tab3">
                 <span class="padded faded text">
