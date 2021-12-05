@@ -17,10 +17,14 @@ st.markdown("## Full demo content will be posted here on December 7th!")
 make_header()
 
 content_text(f"""
-There was a time when you could comfortably train SoTA vision and language models at home on your workstation.
-The first ConvNet to beat ImageNet took in 5-6 days on two gamer-grade GPUs{cite("alexnet")}. Today's top-1 imagenet model 
-took 20,000 TPU-v3 days{cite("coatnet")}. And things are even worse in the NLP world: training GPT-3 on a top-tier server
- with 8 A100 would still take decades{cite("gpt-3")}.""")
+There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
+The first convolutional neural net to beat ImageNet
+(<a target="_blank" href="https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a>)
+was trained for 5-6 days on two gamer-grade GPUs. Today's TOP-1 ImageNet model
+(<a target="_blank" href="https://arxiv.org/abs/2106.04803">CoAtNet</a>)
+takes 20,000 TPU-v3 days. And things are even worse in the NLP world: training
+<a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT-3</a> on a top-tier server
+with 8x A100 would take decades.""")
 
 content_text(f"""
 So, can individual researchers and small labs still train state-of-the-art? Yes we can!
@@ -30,11 +34,12 @@ All it takes is for a bunch of us to come together. In fact, we're doing it righ
 draw_current_progress()
 
 content_text(f"""
-The model we're training is called DALLE: a transformer "language model" that generates images from text description.
-We're training this model on <a target="_blank" rel="noopener noreferrer" href=https://laion.ai/laion-400-open-dataset/>LAION</a> - the world's largest openly available
-image-text-pair dataset with 400 million samples. Our model is based on
-<a target="_blank" rel="noopener noreferrer" href=https://github.com/lucidrains/DALLE-pytorch>dalle-pytorch</a> 
-with several tweaks for memory-efficient training.""")
+We're training a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a>,
+that is, a transformer "language model" that generates images from text description.
+It is trained on <a target="_blank" href=https://laion.ai/laion-400-open-dataset/>LAION-400M</a>,
+the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
+the <a target="_blank" href=https://github.com/lucidrains/DALLE-pytorch>dalle&#8209;pytorch</a> implementation
+by <a target="_blank" href="https://github.com/lucidrains">Phil Wang</a> with several tweaks for memory-efficient training.""")
 
 
 content_title("How do I join?")
@@ -50,7 +55,7 @@ That's easy. First, make sure you're logged in at Hugging Face. If you don't hav
     <li style="margin-top: 4px;">
         You can find other starter kits, evaluation and inference notebooks <b>TODO IN OUR ORGANIZATION</b>;</li>
     <li style="margin-top: 4px;">
-        If you have any issues, <b>TODO DISCORD BADGE</b> </li> 
+        If you have any issues, <b>TODO DISCORD BADGE</b> </li>
 </ul>
 
 Please note that we currently limit the number of colab participants to <b>TODO</b> to make sure we do not interfere
