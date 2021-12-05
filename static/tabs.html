@@ -33,7 +33,7 @@
                 sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 .tab-group {
-    font-size: 16px;
+    font-size: 15px;
 }
 .tab-content {
     margin-top: 16px;
@@ -110,7 +110,7 @@ a:visited {
                     the moderators remove them from the list and revert the model to the latest checkpoint unaffected by the attack.
                     </p>
 
-                    <p><b>Spoiler: How to implement authentication in a decentralized system efficiently?</b></p>
+                    <p><b>Spoiler (TODO): How to implement authentication in a decentralized system efficiently?</b></p>
 
                     <p>
                     Nice bonus: using this data, the moderators can acknowledge the personal contribution of each participant.
@@ -123,7 +123,7 @@ a:visited {
                     suggested such a technique (named CenteredClip) and proved that it does not significantly affect the model's convergence.
                     </p>
 
-                    <p><b>Spoiler: How does CenteredClip protect from outliers? (Interactive Demo)</b></p>
+                    <p><b>Spoiler (TODO): How does CenteredClip protect from outliers? (Interactive Demo)</b></p>
 
                     <p>
                     In our case, CenteredClip is useful but not enough to protect from malicious participants,
@@ -174,9 +174,9 @@ a:visited {
                         <b>(optional)</b> Write code of auxiliary peers (<a href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_aux_peer.py">example</a>):
                         <ul>
                             <li>
-                                It is convenient to create a special kind of peers responsible for
-                                logging loss values and metrics (e.g. to <a href="https://wandb.ai/">Weights & Biases</a>)
-                                and uploading model checkpoints (e.g. to Hugging Face Hub).
+                                Auxiliary peers a special kind of peers responsible for
+                                logging loss and other metrics (e.g., to <a href="https://wandb.ai/">Weights & Biases</a>)
+                                and uploading model checkpoints (e.g., to <a href="https://huggingface.co/docs/transformers/model_sharing">Hugging Face Hub</a>).
                             </li>
                             <li>
                                 Such peers don't need to calculate gradients and may be run on cheap machines without GPUs.
@@ -203,7 +203,7 @@ a:visited {
                             <li>
                                 <a href="https://huggingface.co/organizations/new">Create</a> a Hugging Face organization
                                 with all resources related to the training
-                                (dataset, model, inference demo, links to a dashboard with loss values and metrics, etc.).
+                                (dataset, model, inference demo, links to a dashboard with loss and other metrics, etc.).
                                 Look at <a href="https://huggingface.co/training-transformers-together">ours</a> as an example.
                             </li>
                             <li>
