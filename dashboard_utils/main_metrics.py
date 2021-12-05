@@ -18,13 +18,13 @@ def get_main_metrics():
     api = wandb.Api()
     runs = api.runs(WANDB_REPO)
     run = runs[0]
-    history = run.scan_history(keys=["step", "loss", "alive peers", "_timestamp"])
+    history = run.history(keys=["step", "loss", "alive peers", "_timestamp"])
 
     steps = []
     losses = []
     alive_peers = []
     dates = []
-    for row in history:
+    for _, row in history.iterrows():
         steps.append(row["step"])
         losses.append(row["loss"])
         alive_peers.append(row["alive peers"])
