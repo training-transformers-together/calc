@@ -20,10 +20,10 @@ content_text(f"""
 There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
 The first convolutional neural net to beat ImageNet
 (<a target="_blank" href="https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a>)
-was trained for 5-6 days on two gamer-grade GPUs. Today's TOP-1 ImageNet model
+was trained for 5-6 days on two gamer-grade GPUs. In contrast, today's TOP-1 ImageNet model
 (<a target="_blank" href="https://arxiv.org/abs/2106.04803">CoAtNet</a>)
 takes 20,000 TPU-v3 days. And things are even worse in the NLP world: training
-<a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT-3</a> on a top-tier server
+<a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT&#8209;3</a> on a top-tier server
 with 8x A100 would take decades.""")
 
 content_text(f"""
@@ -47,7 +47,7 @@ content_title("How do I join?")
 content_text("""
 That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one <b>TODO</b>.<br>
 
-<ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -32px;">
+<ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -24px;">
     <li style="margin-top: 4px;">
         Join our organization on Hugging Face here: <b>TODO</b>. </li>
     <li style="margin-top: 4px;">
@@ -62,7 +62,7 @@ Please note that we currently limit the number of colab participants to <b>TODO<
 with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
 """)
 
-content_title("But how does it work?")
+content_title("How does it work?")
 content_text("<b> TODO </b> General Story That Weaves Together Three Tabs Below . Lorem ipsum dolor sit amet, "
              "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
              " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "

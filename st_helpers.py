@@ -30,7 +30,7 @@ def make_header():
 
 
 def make_tabs():
-    components.html(f"{tabs_html}", height=400, scrolling=True)
+    components.html(f"{tabs_html}", height=1000, scrolling=True)
 
 
 def make_footer():

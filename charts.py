@@ -12,7 +12,7 @@ def draw_current_progress():
         source, {
             "height": 200,
             "title": {
-                "text": "Training DALLE with volunteers. Updated every few minutes during NeurIPS.",
+                "text": "Training DALL-E with volunteers (updated every few minutes during NeurIPS 2021)",
                 "dy": 6,
             },
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
