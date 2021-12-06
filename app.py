@@ -39,3 +39,5 @@ st.vega_lite_chart(
     },
     use_container_width=True,  # breaks on <600px screens
 )
+
+st.markdown("<p></p>", unsafe_allow_html=True)
