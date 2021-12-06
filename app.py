@@ -83,7 +83,8 @@ This may seem daunting at first, but in reality, DL researchers have already mad
       roughly 12x. If you don’t want parameter sharing, you can instead use more advanced gradient compression or larger batches.
     """)
 
-# content_title("How do I join?")
+content_title("How do I join?")
+content_text("To be updated on December 7th")
 
 # content_text(f"""
 # That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one {cite("here", "https://huggingface.co/join")}.<br>
