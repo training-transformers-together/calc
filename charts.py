@@ -11,6 +11,7 @@ def draw_current_progress():
     st.vega_lite_chart(
         source, {
             "height": 200,
+            "width": 600,
             "title": {
                 "text": "Training DALL-E with volunteers (updated every few minutes during NeurIPS 2021)",
                 "dy": 6,
@@ -36,7 +37,7 @@ def draw_current_progress():
                 },
             ],
         },
-        use_container_width=True,
+        use_container_width=False,  # breaks on <600px screens
     )
 
 

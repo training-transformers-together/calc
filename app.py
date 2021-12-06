@@ -34,7 +34,7 @@ All it takes is for a bunch of us to come together. In fact, we're doing it righ
 draw_current_progress()
 
 content_text(f"""
-We're training a model similar to {cite("OpenAI DALL-E", "https://openai.com/blog/dall-e/")},
+For this demo we train a model similar to {cite("OpenAI DALL-E", "https://openai.com/blog/dall-e/")},
 that is, a transformer "language model" that generates images from text description.
 It is trained on {cite("LAION-400M", "https://laion.ai/laion-400-open-dataset/")},
 the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
@@ -47,12 +47,12 @@ with st.expander("How to train efficiently over the internet?"):
     content_text(f"""
 Modern distributed training algorithms are designed for HPC networks with 10-100 gigabit per second bandwidth.
 In turn, a typical Internet connection runs at 10-100 megabits per second: that’s three orders of magnitude slower.
-To make distributed training over the Internet efficient, you need to win back these three orders of magnitude.
+To make distributed training efficient, you need to win back these three orders of magnitude.
+This may seem daunting at first, but in reality, DL researchers have already made all the necessary pieces for solving this puzzle:
 """)
     content_text(f"""
-This may seem daunting at first, but in reality, DL researchers have already made all the necessary pieces for solving this puzzle:
 <table style="border: 0px;"><tbody style="border: 0px;">
-<tr><td> Speed-up (AllReduce)<br> </td> <td>Existing technique</td></tr>
+<tr><td> Speed&#8209;up <br> </td> <td>How to achieve</td></tr>
 <tr><td class=centered><strong>4-16x</strong></td><td>
   <strong>Large-batch training:</strong> {cite("You et al. (2019)", "https://arxiv.org/abs/1904.00962")} proposed a way for training neural networks efficiently with larger batches, and hence, fewer communication rounds.
 </td></tr>
@@ -77,12 +77,16 @@ This may seem daunting at first, but in reality, DL researchers have already mad
 </td></tr>
 </tbody></table>
 """)
-
+    content_text("""
+    These techniques are already more than enough to cover 1000x slower communication (totalling to 655. 
+     and choose which techniques to use. In this demo, we use parameter sharing to reduce the number of parameters by
+      roughly 12x. If you don’t want parameter sharing, you can instead use more advanced gradient compression or larger batches.
+    """)
 
 content_title("How do I join?")
 
-content_text("""
-That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one <b>TODO</b>.<br>
+content_text(f"""
+That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one {cite("here", "https://huggingface.co/join")}.<br>
 
 <ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -24px;">
     <li style="margin-top: 4px;">
