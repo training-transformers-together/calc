@@ -7,7 +7,7 @@ import wandb
 
 from dashboard_utils.time_tracker import _log, simple_time_tracker
 
-WANDB_REPO = "learning-at-home/Main_metrics"
+WANDB_REPO = "learning-at-home/dalle-hivemind"
 CACHE_TTL = 120  # note: in the text, we claim that this plot is updated every few minutes
 
 
