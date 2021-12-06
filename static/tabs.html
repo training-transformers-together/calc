@@ -60,7 +60,7 @@ a:visited {
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">"Efficient Training"</a></li>
+            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Memory-Efficient Training</a></li>
             <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">Security</a></li>
             <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">Make Your Own</a></li>
         </ul>
@@ -68,9 +68,42 @@ a:visited {
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="tab1">
-                <span class="padded faded text">
-                <b> TODO 1</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </span>
+                <p>
+                    Our aim is to train a large model in a decentralized fashion on consumer hardware or low-end cloud instances.
+                    This means we need to make the model, dataset, and other memory buffers fit onto a few GB of disk, 12-16 GB of CPU RAM,
+                    and 8-12 GB of GPU memory. Unfortunately, this rules out many popular techniques such as
+                    <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.06840">ZeRO-Offload</a>:
+                    there is simply not enough RAM for that. Instead, we must make better use of what limited memory we have.
+                    To do this, we use two techniques: 8-bit Optimizers for GPU memory and dataset streaming for RAM & HDD.
+                </p>
+                <p>
+                    <b>8-bit Optimizers:</b>
+                    Using optimizers such as LAMB or Adam requires four times as much GPU memory as simply storing model parameters (8 bytes vs 2 bytes).
+                    As such, for training large models with many parameters the optimizers make up the largest chunk of memory.
+                    With 8-bit optimizers this memory is reduced by 75% (2 bytes) making it much easier to fit large models onto consumer GPUs.
+                </p><p>
+                    Naturally, we can combine this technique with offloading: storing 8-bit optimizer states in CPU memory rather
+                    than GPU memory (0 bytes GPU, 2 bytes CPU). To perform an optimizer update, we transfer the GPU gradients
+                    to the CPU, perform the optimizer update, and then transfer the updated weights to the GPU.
+                    We can do this for each weight one-by-one so that additional CPU memory required for the optimizer update
+                    is minimal.
+                    The combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
+                    and also use only a limited amount of CPU memory (2 bytes per parameter).
+
+                </p>
+                <p>
+                    <b>Dataset Streaming</b>
+                    Usually data is stored on disk and needs to be fully or partially loaded into CPU memory to be used for training.
+                    Large datasets used for pre-training measure in <a href="https://arxiv.org/abs/2101.00027">hundreds of gigabytes</a> or even <a href="https://laion.ai/laion-400-open-dataset/">terabytes</a>.
+                    This can pose a significant problem, as most desktop and cheap cloud instance simply do not have that much space.
+                    Furthermore, downloading the dataset over the internet would take up hours before one can even begin training.
+                    <!--Changing the dataset means downloading a new dataset in full and using additional disk space.-->
+                </p><p>
+                    To circumvent these problems, we stream the training dataset in the same way as you stream online videos.
+                    Participants download a small random portion of the training dataset and immediately begin training on it,
+                    while additional data is loaded in background. As such, we can train a model with virtually no memory
+                    overhead from the dataset and switching to a new dataset is as simple as changing an argument to the streamer class.
+                </p>
             </div>
             <div role="tabpanel" class="tab-pane" id="tab2">
                 <p>In this section, we discuss common concerns related to security of the collaborative training.</p>
