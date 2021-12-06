@@ -1,8 +1,8 @@
 ---
-title: NeurIPS Demo
+title: Mini-dashboard
 emoji: ⚡
-colorFrom: green
-colorTo: blue
+colorFrom: gray
+colorTo: gray
 sdk: streamlit
 app_file: app.py
 pinned: false
