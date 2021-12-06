@@ -6,7 +6,6 @@ from streamlit_observable import observable
 
 
 def draw_current_progress():
-    st.markdown("<br>", unsafe_allow_html=True)
     source = get_main_metrics()
 
     st.vega_lite_chart(
@@ -15,7 +14,7 @@ def draw_current_progress():
             "title": {
                 "text": "Training DALL-E with volunteers",
                 # ^-- WARNING: do not use long titles, otherwise vega collapses on small screens
-                "dy": 7,
+                "dy": 6,
             },
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Current training progress",
