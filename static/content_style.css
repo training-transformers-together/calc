@@ -1,10 +1,13 @@
 .faded {
   margin: 0 auto;
   background: var(--window-color);
-  box-shadow: 0 0 5px 5px var(--window-color);
+  box-shadow: 0 0 1px 1px var(--window-color);
   font-family: cursive;
   font-family: "Gill Sans", sans-serif;
   display: inline-block
+}
+.centered {
+  text-align: center;
 }
 .padded {
     width: 100%;

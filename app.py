@@ -19,11 +19,11 @@ make_header()
 content_text(f"""
 There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
 The first convolutional neural net to beat ImageNet
-(<a target="_blank" href="https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a>)
+({cite("AlexNet", "https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf")})
 was trained for 5-6 days on two gamer-grade GPUs. In contrast, today's TOP-1 ImageNet model
-(<a target="_blank" href="https://arxiv.org/abs/2106.04803">CoAtNet</a>)
+({cite("CoAtNet", "https://arxiv.org/abs/2106.04803")})
 takes 20,000 TPU-v3 days. And things are even worse in the NLP world: training
-<a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT&#8209;3</a> on a top-tier server
+{cite("GPT&#8209;3", "https://arxiv.org/abs/2005.14165")} on a top-tier server
 with 8x A100 would take decades.""")
 
 content_text(f"""
@@ -34,12 +34,49 @@ All it takes is for a bunch of us to come together. In fact, we're doing it righ
 draw_current_progress()
 
 content_text(f"""
-We're training a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a>,
+We're training a model similar to {cite("OpenAI DALL-E", "https://openai.com/blog/dall-e/")},
 that is, a transformer "language model" that generates images from text description.
-It is trained on <a target="_blank" href=https://laion.ai/laion-400-open-dataset/>LAION-400M</a>,
+It is trained on {cite("LAION-400M", "https://laion.ai/laion-400-open-dataset/")},
 the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
-the <a target="_blank" href=https://github.com/lucidrains/DALLE-pytorch>dalle&#8209;pytorch</a> implementation
-by <a target="_blank" href="https://github.com/lucidrains">Phil Wang</a> with several tweaks for memory-efficient training.""")
+the {cite("dalle&#8209;pytorch", "https://github.com/lucidrains/DALLE-pytorch")} implementation
+by {cite("Phil Wang", "https://github.com/lucidrains")} with a few tweaks to make it communication-efficient.
+""", vspace_after=8)
+
+
+with st.expander("How to train efficiently over the internet?"):
+    content_text(f"""
+Modern distributed training algorithms are designed for HPC networks with 10-100 gigabit per second bandwidth.
+In turn, a typical Internet connection runs at 10-100 megabits per second: that’s three orders of magnitude slower.
+To make distributed training over the Internet efficient, you need to win back these three orders of magnitude.
+""")
+    content_text(f"""
+This may seem daunting at first, but in reality, DL researchers have already made all the necessary pieces for solving this puzzle:
+<table style="border: 0px;"><tbody style="border: 0px;">
+<tr><td> Speed-up (AllReduce)<br> </td> <td>Existing technique</td></tr>
+<tr><td class=centered><strong>4-16x</strong></td><td>
+  <strong>Large-batch training:</strong> {cite("You et al. (2019)", "https://arxiv.org/abs/1904.00962")} proposed a way for training neural networks efficiently with larger batches, and hence, fewer communication rounds.
+</td></tr>
+<tr><td class=centered><strong>4-64x</strong></td><td>
+  <strong>Gradient Compression:</strong> from simple {cite("8-bit quantization", "https://arxiv.org/abs/1511.04561")}
+   to advanced techniques such as {cite("Deep Gradient Compression", "https://arxiv.org/abs/1712.01887")}, 
+   {cite("PowerSGD", "https://arxiv.org/abs/1905.13727")}, {cite("1-bit Adam", "https://arxiv.org/abs/2102.02888")},
+    and many others. As a rule of thumb, you can safely reduce communication by 16-64x. More extreme compression is often
+    possible, but it may affect stability or final quality.
+</td></tr>
+<tr><td class=centered><strong>4-24x</strong></td><td>
+   <strong>Parameter sharing:</strong> reusing parameters between model layers results in a model with fewer parameters,
+    and hence, fewer gradients to communicate. {cite("Lan et al. (2019)", "https://arxiv.org/abs/1909.11942")} and 
+    {cite("Xue et al. (2021)", "https://arxiv.org/pdf/2107.11817.pdf")} propose efficient parameter sharing techniques
+    for NLP and vision.
+</td></tr>
+<tr><td class=centered><strong>1.5-2x</strong></td><td>
+   <strong>Overlapping computation with communication:</strong> running network communication in background while
+   computing the next portion of gradients. This is a {cite("long-standing trick from HPC", "https://ur.booksc.eu/book/1624068/2d0506")}
+    that was recently adapted for DL training. {cite("Ren et al. (2021)", "https://arxiv.org/abs/2101.06840")} show that
+     updating parameters in background while computing the next batch of gradients does not reduce convergence.
+</td></tr>
+</tbody></table>
+""")
 
 
 content_title("How do I join?")
@@ -71,5 +108,4 @@ content_text("<b> TODO </b> General Story That Weaves Together Three Tabs Below 
 
 make_tabs()
 
-content_text("<b> TODO UPDATE")
 make_footer()

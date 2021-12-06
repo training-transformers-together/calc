@@ -50,10 +50,5 @@ def content_text(text: str, vspace_before: int = 0, vspace_after: int = 0):
                 f'{text}</div><center>',
                 unsafe_allow_html=True)
 
-
-CITATIONS = {}
-
-
-def cite(tag):
-    CITATIONS.setdefault(tag, len(CITATIONS) + 1)
-    return f"&nbsp;[{CITATIONS[tag]}]"
+def cite(tag, link):
+    return f"""<a target="_blank" rel="noopener noreferrer" href="{link}">{tag}</a>"""
