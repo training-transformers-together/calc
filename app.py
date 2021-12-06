@@ -11,8 +11,7 @@ from charts import draw_current_progress
 
 st.set_page_config(page_title="Training Transformers Together", layout="centered")
 
-
-st.markdown("## Full demo content will be posted here on December 7th!")
+st.markdown("## Full demo will be posted here on December 7th!")
 
 make_header()
 
@@ -79,37 +78,33 @@ This may seem daunting at first, but in reality, DL researchers have already mad
 </tbody></table>
 """)
     content_text("""
-    These techniques are already more than enough to cover 1000x slower communication (totalling to 655. 
+    These techniques are already more than enough to cover 1000x slower communication. 
      and choose which techniques to use. In this demo, we use parameter sharing to reduce the number of parameters by
       roughly 12x. If you don’t want parameter sharing, you can instead use more advanced gradient compression or larger batches.
     """)
 
-content_title("How do I join?")
+# content_title("How do I join?")
 
-content_text(f"""
-That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one {cite("here", "https://huggingface.co/join")}.<br>
+# content_text(f"""
+# That's easy. First, make sure you're logged in at Hugging Face. If you don't have an account, create one {cite("here", "https://huggingface.co/join")}.<br>
+#
+# <ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -24px;">
+#     <li style="margin-top: 4px;">
+#         Join our organization on Hugging Face here: <b>TODO</b>. </li>
+#     <li style="margin-top: 4px;">
+#         The simplest way to start is with colab <b>TODO</b>;</li>
+#     <li style="margin-top: 4px;">
+#         You can find other starter kits, evaluation and inference notebooks <b>TODO IN OUR ORGANIZATION</b>;</li>
+#     <li style="margin-top: 4px;">
+#         If you have any issues, <b>TODO DISCORD BADGE</b> </li>
+# </ul>
+#
+# Please note that we currently limit the number of colab participants to <b>TODO</b> to make sure we do not interfere
+# with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
+# """)
 
-<ul style="text-align: left; list-style-position: inside; margin-top: 12px; margin-left: -24px;">
-    <li style="margin-top: 4px;">
-        Join our organization on Hugging Face here: <b>TODO</b>. </li>
-    <li style="margin-top: 4px;">
-        The simplest way to start is with colab <b>TODO</b>;</li>
-    <li style="margin-top: 4px;">
-        You can find other starter kits, evaluation and inference notebooks <b>TODO IN OUR ORGANIZATION</b>;</li>
-    <li style="margin-top: 4px;">
-        If you have any issues, <b>TODO DISCORD BADGE</b> </li>
-</ul>
-
-Please note that we currently limit the number of colab participants to <b>TODO</b> to make sure we do not interfere
-with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
-""")
-
-content_title("How does it work?")
-content_text("<b> TODO </b> General Story That Weaves Together Three Tabs Below . Lorem ipsum dolor sit amet, "
-             "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
-             " ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-             "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
-             "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+content_title("How does collaborative training work?")
+content_text("In order to train a model this way, you need to s")
 
 make_tabs()
 
