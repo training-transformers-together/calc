@@ -15,7 +15,7 @@ def draw_current_progress():
             "title": {
                 "text": "Training DALL-E with volunteers",
                 # ^-- WARNING: do not use long titles, otherwise vega collapses on small screens
-                "dy": 6,
+                "dy": 7,
             },
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Current training progress",
