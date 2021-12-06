@@ -103,8 +103,7 @@ This may seem daunting at first, but in reality, DL researchers have already mad
 # with other users. If there are too many active peers, take a look at alternative starter kits here <b>TODO</b>
 # """)
 
-content_title("How does collaborative training work?")
-content_text("In order to train a model this way, you need to s")
+content_title("What happens inside?")
 
 make_tabs()
 
