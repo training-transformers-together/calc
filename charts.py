@@ -1,5 +1,4 @@
 import streamlit as st
-from bokeh.plotting import figure
 
 from dashboard_utils.bubbles import get_new_bubble_data
 from dashboard_utils.main_metrics import get_main_metrics
@@ -9,16 +8,6 @@ from streamlit_observable import observable
 def draw_current_progress():
     st.markdown("<br>", unsafe_allow_html=True)
     source = get_main_metrics()
-
-    # DEBUG
-    x = [1, 2, 3, 4, 5]
-    y = [6, 7, 2, 4, 5]
-    p = figure(
-        title='Training DALL-E with volunteers (updated regularly during NeurIPS)',
-        x_axis_label='x', y_axis_label='y', height=200)
-    p.line(x, y, legend_label='Trend', line_width=2)
-    st.bokeh_chart(p, use_container_width=True)
-    # /DEBUG
 
     st.vega_lite_chart(
         source, {
