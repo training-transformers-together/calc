@@ -9,8 +9,6 @@ from dashboard_utils.main_metrics import get_main_metrics
 
 st.set_page_config(page_title="Training Transformers Together - Mini-Dashboard", layout="wide")
 
-st.markdown("PEWPEWPEW")
-
 source = get_main_metrics()
 st.vega_lite_chart(
     source, {
@@ -41,5 +39,3 @@ st.vega_lite_chart(
     },
     use_container_width=True,  # breaks on <600px screens
 )
-
-st.markdown("<p></p>", unsafe_allow_html=True)
