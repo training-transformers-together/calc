@@ -78,9 +78,10 @@ This may seem daunting at first, but in reality, DL researchers have already mad
 </tbody></table>
 """)
     content_text("""
-    These techniques are already more than enough to cover 1000x slower communication. 
-     and choose which techniques to use. In this demo, we use parameter sharing to reduce the number of parameters by
-      roughly 12x. If you don’t want parameter sharing, you can instead use more advanced gradient compression or larger batches.
+    These techniques are already more than enough to cover 1000x slower communication (48 times over!).
+    This means that in practice you can pick and choose choose which of them you want in your training run.
+    For this demo, we use 8x larger batches, 4x compression, 12x parameter sharing and partial overlapping.
+    If you don’t want parameter sharing, you can trade it for more advanced gradient compression or larger batches.
     """)
 
 content_title("How do I join?")
