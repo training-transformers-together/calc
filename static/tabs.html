@@ -89,7 +89,6 @@ a:visited {
                     is minimal.
                     The combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
                     and also use only a limited amount of CPU memory (2 bytes per parameter).
-
                 </p>
                 <p>
                     <b>Dataset Streaming</b>
@@ -98,12 +97,20 @@ a:visited {
                     This can pose a significant problem, as most desktop and cheap cloud instance simply do not have that much space.
                     Furthermore, downloading the dataset over the internet would take up hours before one can even begin training.
                     <!--Changing the dataset means downloading a new dataset in full and using additional disk space.-->
-                </p><p>
+                </p>
+                <p>
                     To circumvent these problems, we stream the training dataset in the same way as you stream online videos.
                     Participants download a small random portion of the training dataset and immediately begin training on it,
                     while additional data is loaded in background. As such, we can train a model with virtually no memory
-                    overhead from the dataset and switching to a new dataset is as simple as changing an argument to the streamer class.
+                    overhead from the dataset and switching to a new dataset is as simple as changing an argument to the dataset class.
                 </p>
+                <center>
+                    Here's a tutorial for using these techniques:<br>
+                    <a href="https://colab.research.google.com/gist/justheuristic/75f6a2a731f05a213a55cd2c8a458aaf/fine-tune-a-language-model-with-dataset-streaming-and-8-bit-optimizers.ipynb">
+                        <img src="https://colab.research.google.com/assets/colab-badge.svg" width=360px>
+                    </a>
+                </center>
+
             </div>
             <div role="tabpanel" class="tab-pane" id="tab2">
                 <p>In this section, we discuss common concerns related to security of the collaborative training.</p>
