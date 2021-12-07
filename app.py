@@ -29,9 +29,9 @@ with st.expander("More options"):
     batch_size = int(st.number_input('Microbatch size (sequences)', min_value=1, step=1, value=1, format="%i"))
     precisions_names = ('Full', 'Mixed ("O1")', 'Pure 16-bit')
     precisions_values = ('O0', 'O1', 'O3')
+    precision = st.selectbox('Precision', precisions_names, index=1)
     sharing_groups = int(st.number_input('Shared parameter groups (used if Share parameters is checked)',
                                          min_value=1, step=1, value=1, format="%i"))
-    precision = st.selectbox('Precision', precisions_names, index=1)
 
 args = mem_calc.parse_args(f"""
     --model {model} --optimizer {optimizers_values[optimizers_names.index(optimizer)]}
