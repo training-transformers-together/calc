@@ -44,12 +44,12 @@ memory = mem_calc.calculate_memory(args)
 
 cols = st.columns(2)
 cols[0].metric("GPU total", f"{memory['total_mem']:.2f} GB")
-cols[1].metric("Offloaded to RAM", f"{memory['cpu_mem']:.2f} GB")
+cols[1].metric("Offloaded (RAM)", f"{memory['cpu_mem']:.2f} GB")
 
 cols = st.columns(2)
-cols[0].metric("Parameters (GPU)", f"{memory['model']:.2f} GB", f"{memory['model']/memory['total_mem'] * 100:.2f} %", delta_color="off")
-cols[1].metric("Activations (GPU)", f"{memory['grad']:.2f} GB", f"{memory['grad']/memory['total_mem'] * 100:.2f} %", delta_color="off")
+cols[0].metric("Parameters", f"{memory['model']:.2f} GB", f"{memory['model']/memory['total_mem'] * 100:.2f} %", delta_color="off")
+cols[1].metric("Activations", f"{memory['grad']:.2f} GB", f"{memory['grad']/memory['total_mem'] * 100:.2f} %", delta_color="off")
 
 cols = st.columns(2)
-cols[0].metric("Communication overhead", f"{memory['overhead'] * 1000:.2f} ms")
+cols[0].metric("CPU-GPU Transfer", f"{memory['overhead'] * 1000:.2f} ms")
 cols[1].metric(f"Optimizer ({'GPU' if offload else 'CPU'})", f"{memory['cpu_mem'] if offload else memory['optim']:.2f} GB", f"{memory['optim']/memory['total_mem'] * 100:.2f} %", delta_color="off")
