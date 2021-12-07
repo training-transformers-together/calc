@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://training-transformers-together:$HF_TOKEN@huggingface.co/spaces/training-transformers-together/dashboard-embedded main --force
+        run: git push https://training-transformers-together:$HF_TOKEN@huggingface.co/spaces/training-transformers-together/calc main --force

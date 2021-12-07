@@ -1,8 +1,8 @@
 ---
-title: Mini-dashboard
+title: Memory calculator
 emoji: ⚡
-colorFrom: gray
-colorTo: gray
+colorFrom: blue
+colorTo: blue
 sdk: streamlit
 app_file: app.py
 pinned: false
