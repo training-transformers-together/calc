@@ -32,10 +32,8 @@ with st.expander("More options"):
     precisions_values = ('O0', 'O1', 'O3')
     precision = st.selectbox('Precision', precisions_names, index=1)
 
-    vocab_size = int(st.number_input('Vocabulary size', min_value=1, step=1, value=50257, format="%i"))
-
 args = mem_calc.parse_args(f"""
-    --model {model} --vocab_size {vocab_size} --optimizer {optimizers_values[optimizers_names.index(optimizer)]}
+    --model {model} --optimizer {optimizers_values[optimizers_names.index(optimizer)]}
     {'--checkpoint' if checkpoint else ''} {'--offload' if offload else ''} {'--albert' if share_params else ''}
     --fp16-level {precisions_values[precisions_names.index(precision)]} --bsz {batch_size} --seqlen {seq_len}
 """.split())

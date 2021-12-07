@@ -123,7 +123,7 @@ def parse_args(args=None):
                         help='FP16-level to use. O0 = FP32; O1 = mixed-precision (16+32); O3 = fp16. Default: O1.')
     parser.add_argument('--model', default='', choices=list(models.keys()), help='Predefined NLP transformer models')
     parser.add_argument('--optimizer', default='adam', choices=OPTIMIZERS, help='The optimizer to use.')
-    parser.add_argument('--vocab_size', type=int, default=50257, help='The vocabulary to use.')
+    parser.add_argument('--vocab_size', type=int, default=None, help='The vocabulary to use.')
     parser.add_argument('--offload', action='store_true', help='Whether to use optimizer offload.')
     parser.add_argument('--ngpus', type=int, default=1, help='The number of gpus. Default: 1')
     parser.add_argument('--zero', type=int, default=0,
