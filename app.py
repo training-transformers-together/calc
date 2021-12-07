@@ -17,12 +17,13 @@ st.markdown("""<style>
 models = list(models.keys())  # respect the original order because py37
 model = st.selectbox('Model architecture', models, index=models.index("gpt2-l"))
 
+col1, col2 = st.columns(2)
 optimizers_names = ('32-bit', '16-bit', '8-bit', 'factorized')
 optimizers_values = ['adam', '16-bit-adam', '8-bit-adam', 'adafactor']
-optimizer = st.radio('Adam / LAMB states', optimizers_names)
-checkpoint = st.checkbox("Gradient checkpointing", value=True)
-offload = st.checkbox("Offload optimizer", value=False)
-share_params = st.checkbox("Share parameters", value=False)
+optimizer = col1.radio('Adam / LAMB states', optimizers_names)
+checkpoint = col2.checkbox("Gradient checkpointing", value=True)
+offload = col2.checkbox("Offload optimizer", value=False)
+share_params = col2.checkbox("Share parameters", value=False)
 
 with st.expander("More options"):
 
