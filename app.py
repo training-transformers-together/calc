@@ -7,7 +7,7 @@ import streamlit as st
 
 import mem_calc
 from models import models
-st.set_page_config(page_title="Memory calculator", layout="centered")
+st.set_page_config(page_title="Memory calculator", layout="wide")
 st.markdown("""<style>
 .reportview-container {
     top: -80px;
