@@ -56,13 +56,6 @@ models['gpt2-xl']['dhid'] = 1600*4
 models['gpt2-xl']['nlayers'] = 48
 models['gpt2-xl']['vocab_size'] = 50257
 
-models['gpt-j-6b'] = {}
-models['gpt-j-6b']['seqlen'] = 2048
-models['gpt-j-6b']['dmodel'] = 4096
-models['gpt-j-6b']['dhid'] = 4096 * 4
-models['gpt-j-6b']['nlayers'] = 28
-models['gpt-j-6b']['vocab_size'] = 50400
-
 models['gpt3-s'] = {}
 models['gpt3-s']['seqlen'] = 2048
 models['gpt3-s']['dmodel'] = 768
@@ -118,3 +111,16 @@ models['gpt3-175b']['dmodel'] = 12288
 models['gpt3-175b']['dhid'] = 12288*4
 models['gpt3-175b']['nlayers'] = 96
 models['gpt3-175b']['vocab_size'] = 50257  # from public reimplementations
+
+models['gpt-j-6b'] = {}
+models['gpt-j-6b']['seqlen'] = 2048
+models['gpt-j-6b']['dmodel'] = 4096
+models['gpt-j-6b']['dhid'] = 4096 * 4
+models['gpt-j-6b']['nlayers'] = 28
+models['gpt-j-6b']['vocab_size'] = 50400
+
+models['dalle-12b'] = {}
+models['dalle-12b']['seqlen'] = 1024 + 256
+models['dalle-12b']['dmodel'] = 62 * 64
+models['dalle-12b']['nlayers'] = 64
+models['dalle-12b']['vocab_size'] = 8192 + 16384

@@ -24,7 +24,7 @@ def vocab(bsz, seqlen, dmodel, vocab_dim):
 
 
 def transformer(bsz, seqlen, dmodel, nlayers, vocab_type, dhid=None,
-                checkpoint=False, albert=False):
+                checkpoint=False, shared_groups=None):
     if dhid is None: dhid = 4*dmodel
     model = 0
     grad = 0
@@ -33,8 +33,8 @@ def transformer(bsz, seqlen, dmodel, nlayers, vocab_type, dhid=None,
         model += m
         grad += g
 
-    if albert:
-        model = model / nlayers
+    if shared_groups is not None:
+        model = model / nlayers * shared_groups
 
     m, g = vocab(bsz, seqlen, dmodel, vocab_type)
     model += m
@@ -128,7 +128,7 @@ def parse_args(args=None):
     parser.add_argument('--ngpus', type=int, default=1, help='The number of gpus. Default: 1')
     parser.add_argument('--zero', type=int, default=0,
                         help='The ZeRO level (1 optimizer, 2 optimizer+weights, 3 everything. Default: 1')
-    parser.add_argument('--albert', action='store_true', help='Use parameter sharing.')
+    parser.add_argument('--shared_groups', type=int, default=None, help='Number of shared layer groups (as in ALBERT). Defaults to no sharing.')
     parser.add_argument('--checkpoint', action='store_true', help='Use gradient checkpointing.')
 
     return parser.parse_args(args)
@@ -143,7 +143,7 @@ def calculate_memory(args):
                 if getattr(args, key, None) is None:
                     setattr(args, key, value)
 
-    model, grad = transformer(args.bsz, args.seqlen, args.dmodel, args.nlayers, args.vocab_size, args.dhid, args.checkpoint, args.albert)
+    model, grad = transformer(args.bsz, args.seqlen, args.dmodel, args.nlayers, args.vocab_size, args.dhid, args.checkpoint, args.shared_groups)
     parameters = model
 
     if args.optimizer == 'adam':
