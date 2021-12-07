@@ -26,7 +26,8 @@ offload = col2.checkbox("Offload optimizer", value=False)
 share_params = col2.checkbox("Share parameters", value=False)
 
 with st.expander("More options"):
-
+    batch_size = int(st.number_input('Microbatch size (sequences)', min_value=1, step=1, value=1, format="%i"))
+    seq_len = int(st.number_input('Sequence length (max. tokens)', min_value=1, step=1, value=1024, format="%i"))
     precisions_names = ('Full', 'Mixed ("O1")', 'Pure 16-bit')
     precisions_values = ('O0', 'O1', 'O3')
     precision = st.selectbox('Precision', precisions_names, index=1)
@@ -36,7 +37,7 @@ with st.expander("More options"):
 args = mem_calc.parse_args(f"""
     --model {model} --vocab_size {vocab_size} --optimizer {optimizers_values[optimizers_names.index(optimizer)]}
     {'--checkpoint' if checkpoint else ''} {'--offload' if offload else ''} {'--albert' if share_params else ''}
-    --fp16-level {precisions_values[precisions_names.index(precision)]}
+    --fp16-level {precisions_values[precisions_names.index(precision)]} --bsz {batch_size} --seqlen {seq_len}
 """.split())
 
 
