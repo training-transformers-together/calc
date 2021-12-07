@@ -51,5 +51,5 @@ cols[0].metric("Parameters", f"{memory['model']:.2f} GB")#, f"{memory['model']/m
 cols[1].metric("Activations", f"{memory['grad']:.2f} GB")#, f"{memory['grad']/memory['total_mem'] * 100:.2f} %", delta_color="off")
 
 cols = st.columns(2)
-cols[0].metric(f"Optimizer ({'GPU' if offload else 'CPU'})", f"{memory['cpu_mem'] if offload else memory['optim']:.2f} GB")#, f"{memory['optim']/memory['total_mem'] * 100:.2f} %", delta_color="off")
+cols[0].metric(f"Optimizer ({'CPU' if offload else 'GPU'})", f"{memory['cpu_mem'] if offload else memory['optim']:.2f} GB")#, f"{memory['optim']/memory['total_mem'] * 100:.2f} %", delta_color="off")
 cols[1].metric("CPU-GPU Transfer", f"{memory['overhead'] * 1000:.2f} ms")
